@@ -13,4 +13,4 @@ Usage:
 2 - Enter the required information
 3 - View your account details saved to Accounts/Output.txt
 
-<a href="https://imgur.com/TdGdkxF"><img src="https://i.imgur.com/TdGdkxF.png" title="source: imgur.com" /></a>
+<img src="https://i.imgur.com/TdGdkxF.png" /></a>
