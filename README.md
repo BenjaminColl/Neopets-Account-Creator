@@ -10,8 +10,11 @@ Requirements:
 Usage:
 
 1 - Open the Account Creatory.py file
+<br>
 2 - Enter the required information
+<br>
 3 - View your account details saved to Accounts/Output.txt
+<br>
 4 - Output gets saved in the following format: Username:Password:Email:Birthday
 
 <img src="https://i.imgur.com/TdGdkxF.png" /></a>
