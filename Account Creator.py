@@ -1,6 +1,11 @@
 import requests, os, random, sys
 from random import randint
 
+try:
+    os.mkdir('Accounts')
+except:
+    ''
+
 class NAC(object):
     def __init__(self):
         self.s = requests.session()
