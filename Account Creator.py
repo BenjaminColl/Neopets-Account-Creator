@@ -1,5 +1,6 @@
 import requests, os, random, sys
 from random import randint
+from GetEmails import ReadEmail
 
 try:
     os.mkdir('Accounts')
@@ -33,7 +34,7 @@ class NAC(object):
         url = self.base + 'signup/ajax.phtml'
         r = self.s.post(url, data=signup_data)
         if 'true' in r.text:
-            print('Submitted our username and password successfully, onto the next step.')
+            print('Submitted our username and password successfully.')
             url = self.base + 'signup/index.phtml?cookieCheck=1'
             self.s.get(url)
         if 'unavailable' in r.text:
@@ -90,9 +91,21 @@ class NAC(object):
         f.close()
         print('Saved account information to: Accounts\\Output.txt')
 
+    def Activation(self):
+        self.s.headers.update({'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36','Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8','Accept-Encoding':'gzip, deflate','Accept-Language':'en-US,en;q=0.9'})
+        activation = ReadEmail.GetActivation('Username@gmail.com', 'Password')
+        r = self.s.get(activation)
+        if 'Sign Up with Neopets: Finished!' in r.text:
+            print('Account is now activated.')
+        elif 'Sign Up with Neopets: Finished!' not in r.text:
+            print('Failed to activate account.')
+
+
+
     def dosignup(self):
         self.signup()
         self.savedata()
+        self.Activation()
 
 if __name__ == '__main__':
     a=NAC()
